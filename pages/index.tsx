@@ -1,3 +1,4 @@
+import SunnyIcon from '@/public/icons/Sunny'
 import { RootState } from '@/store/store'
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
@@ -14,7 +15,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <SunnyIcon />
     </>
   )
 }
