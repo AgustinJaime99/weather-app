@@ -1,12 +1,14 @@
 import SunnyIcon from '@/public/icons/Sunny'
+import { useGetWeatherByNameQuery } from '@/services/getHome'
 import { RootState } from '@/store/store'
 import Head from 'next/head'
 import { useSelector } from 'react-redux'
 
 export default function Home() {
-  console.log(process.env.NEXT_PUBLIC_API_KEY)
   const { entities } = useSelector((state: RootState) => state.testReducer)
-  console.log(entities)
+  const { data, error, isLoading } = useGetWeatherByNameQuery('Mar del plata')
+  console.log(data, error, isLoading)
+
   return (
     <>
       <Head>
@@ -15,7 +17,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <SunnyIcon />
+      <div style={{ height: '92.8vh', marginLeft: '25rem' }}>
+        Hola
+      </div>
     </>
   )
 }
