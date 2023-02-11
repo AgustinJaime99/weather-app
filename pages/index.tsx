@@ -1,13 +1,17 @@
-import SunnyIcon from '@/public/icons/Sunny'
+// import SunnyIcon from '@/public/icons/Sunny'
+import { HomeCard } from '@/components/common/HomeCard'
 import { useGetWeatherByNameQuery } from '@/services/getHome'
-import { RootState } from '@/store/store'
+// import { RootState } from '@/store/store'
+import Test from '@/public/images/sun_cloudy.png'
 import Head from 'next/head'
-import { useSelector } from 'react-redux'
+import Image from 'next/image'
+import SunCloudyIcon from '@/public/icons/SunCloudy'
+// import { useSelector } from 'react-redux'
 
 export default function Home() {
-  const { entities } = useSelector((state: RootState) => state.testReducer)
-  const { data, error, isLoading } = useGetWeatherByNameQuery('Mar del plata')
-  console.log(data, error, isLoading)
+  // const { entities } = useSelector((state: RootState) => state.testReducer)
+  // const { data, error, isLoading } = useGetWeatherByNameQuery('Mar del plata')
+  // console.log(data, error, isLoading)
 
   return (
     <>
@@ -17,8 +21,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ height: '92.8vh', marginLeft: '25rem' }}>
-        Hola
+      <div style={{ height: '92.8vh', margin: '0 auto 0 60rem', padding: '1em 0 0 0' }}>
+        <HomeCard />
       </div>
     </>
   )
