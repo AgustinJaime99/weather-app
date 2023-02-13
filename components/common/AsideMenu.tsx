@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import Logo from '@/public/images/icon_image.png'
 import DashboardIcon from '@/public/icons/Dashboard'
 import ReportIcon from '@/public/icons/Report'
 import styles from '@/styles/Layout.module.scss'
@@ -14,7 +12,7 @@ export const AsideMenu = () => {
         <h3>Forecasting</h3>
       </div>
       <p className={styles.p}>Main</p>
-      <div className='menu'>
+      <div className={styles.menu__aside}>
         <Link passHref href='/' className={route.pathname === '/' ? styles.item__selected : styles.item}>
           <DashboardIcon color={route.pathname === '/' ? '#47BFDF' : '#001E50'} />
           <h6> Dashboard</h6>

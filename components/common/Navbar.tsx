@@ -23,7 +23,7 @@ export const Navbar = () => {
       <div onClick={(e) => toggleOpen()} className={isOpen ? styles.city__info__open : styles.city__info__closed}>
         <LocationIcon fill={isOpen ? '#fff' : "#000"} />
         <h3>
-          {isSuccess && data?.name}
+          {isSuccess && data?.name || 'Find a city'}
         </h3>
         <ArrowIcon fill={isOpen ? '#fff' : "#000"} />
       </div>

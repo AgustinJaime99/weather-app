@@ -47,6 +47,14 @@
   .menu__aside {
     display: flex;
     flex-direction: column;
+    path {
+      transition: ease-in-out 0.3s;
+    }
+    &:hover {
+      path {
+        stroke: #47BFDF;
+      }
+    }
   }
 
   .item {
