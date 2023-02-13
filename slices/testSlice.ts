@@ -13,4 +13,6 @@ const citySlice = createSlice({
   },
 });
 
+export const { changeCoord } = citySlice.actions;
+
 export default citySlice.reducer;

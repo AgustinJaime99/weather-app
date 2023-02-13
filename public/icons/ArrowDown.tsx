@@ -11,7 +11,6 @@ const ArrowIcon = (props: SVGProps<SVGSVGElement>) => (
   >
     <path
       d="M7.252 8.66.757 2.165 2.923 0l4.33 4.33L11.581 0l2.166 2.165L7.252 8.66Z"
-      fill="#000"
     />
   </svg>
 )

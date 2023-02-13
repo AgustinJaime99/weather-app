@@ -1,5 +1,6 @@
 .card_container {
-  width: 353px;
+  min-width: 353px;
+  width: auto;
   height: auto;
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(10px);
@@ -45,7 +46,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
+    gap: 30px;
 
     h4 {
       font-family: 'Inter', sans-serif;

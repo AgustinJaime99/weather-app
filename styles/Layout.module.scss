@@ -114,11 +114,34 @@
   padding: 0 30px;
   box-shadow: inset 0px -0.5px 0px #E9EBF0;
 
-  .city__info {
+  .city__info__closed,
+  .city__info__open {
+    position: relative;
+    cursor: pointer;
     display: flex;
     flex-direction: row;
     gap: 20px;
     align-items: center;
+    path {
+      transition: all ease-in-out 0.3s;
+    }
+    h3{
+      transition: all ease-in-out 0.3s;
+    }
+  }
+  .city__info__open {
+    z-index: 20;
+    path {
+      fill: #fff;
+    }
+    h3 {
+      color: #fff
+    }
+  }
+  .city__info__closed {
+    path {
+      fill: #000;
+    }
   }
 
   h3 {
