@@ -11,7 +11,6 @@ export const AsideMenu = () => {
   return (
     <aside className={styles.aside}>
       <div className={styles.logo__container}>
-        <Image alt='logo' src={Logo} width={118} height={40} placeholder='blur' />
         <h3>Forecasting</h3>
       </div>
       <p className={styles.p}>Main</p>

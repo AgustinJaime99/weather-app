@@ -1,17 +1,14 @@
-// import SunnyIcon from '@/public/icons/Sunny'
 import { HomeCard } from '@/components/common/HomeCard'
-import { useGetWeatherByNameQuery } from '@/services/getHome'
-// import { RootState } from '@/store/store'
-import Test from '@/public/images/sun_cloudy.png'
+import { useCustomSelector } from '@/hooks'
+import { useGetCityDetailQuery, useGetWeatherByNameQuery } from '@/services/getApi'
 import Head from 'next/head'
 import Image from 'next/image'
-import SunCloudyIcon from '@/public/icons/SunCloudy'
-// import { useSelector } from 'react-redux'
 
 export default function Home() {
-  // const { entities } = useSelector((state: RootState) => state.testReducer)
-  // const { data, error, isLoading } = useGetWeatherByNameQuery('Mar del plata')
-  // console.log(data, error, isLoading)
+  const { lat, lon } = useCustomSelector((state) => state.cityDetail)
+  const { data, error, isLoading, isSuccess } = useGetCityDetailQuery({ lat, lon })
+  const URL_ICONS = "http://openweathermap.org/img/wn/"
+  const urlIcon = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
 
   return (
     <>
@@ -21,8 +18,23 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ height: '92.8vh', margin: '0 auto 0 60rem', padding: '1em 0 0 0' }}>
-        <HomeCard />
+      <div style={{ height: '92.8vh', margin: '0rem auto 0 15rem', padding: '5em 0 0 0' }}>
+        {error && <p>error</p>}
+        {isLoading && <p>Loading</p>}
+        {isSuccess &&
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
+            <Image src={urlIcon} alt='Weather icon' width={100} height={100} />
+            <HomeCard
+              weatherState={data?.weather[0]?.main}
+              humidity={data?.main?.humidity}
+              windSpeed={data?.wind?.speed}
+              condition={data?.weather[0]?.description}
+              feelsLike={data?.main?.feels_like}
+              temperature={data?.main?.temp}
+              maxTemp={data?.main?.temp_max}
+              minTemp={data?.main?.temp_min} />
+          </div>
+        }
       </div>
     </>
   )

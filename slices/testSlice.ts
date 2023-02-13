@@ -1,24 +1,16 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-export const fetchApi = createAsyncThunk('city/getAllInfo', async (thunkApi) => {
-  const response = await fetch('url');
-  const data = await response.json();
-  return data;
-});
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  entities: [],
-} as any;
+  lat: '-37.81',
+  lon: '144.96',
+};
 
-const testSlice = createSlice({
-  name: 'test',
+const citySlice = createSlice({
+  name: 'cityDetail',
   initialState,
-  reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(fetchApi.fulfilled, (state, action) => {
-      state.entities.push(...action.payload);
-    });
+  reducers: {
+    changeCoord: (state, action) => action.payload,
   },
 });
 
-export default testSlice.reducer;
+export default citySlice.reducer;
