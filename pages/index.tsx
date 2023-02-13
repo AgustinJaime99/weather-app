@@ -1,15 +1,17 @@
+import { Error } from '@/components/common/Error'
 import { HomeCard } from '@/components/common/HomeCard'
+import { Loader } from '@/components/common/Loader'
 import { useCustomSelector } from '@/hooks'
-import { useGetCityDetailQuery, useGetWeatherByNameQuery } from '@/services/getApi'
+import { useGetCityDetailQuery } from '@/services/getApi'
 import Head from 'next/head'
 import Image from 'next/image'
 
+
 export default function Home() {
   const { lat, lon } = useCustomSelector((state) => state.cityDetail)
-  const { data, error, isLoading, isSuccess } = useGetCityDetailQuery({ lat, lon })
-  const URL_ICONS = "http://openweathermap.org/img/wn/"
-  const urlIcon = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
-
+  const { data, error, isLoading, isSuccess, isFetching } = useGetCityDetailQuery({ lat, lon })
+  const URL_ICONS: string = "http://openweathermap.org/img/wn/"
+  const urlIcon: string = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
   return (
     <>
       <Head>
@@ -18,10 +20,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ height: '92.8vh', margin: '0rem auto 0 15rem', padding: '5em 0 0 0' }}>
-        {error && <p>error</p>}
-        {isLoading && <p>Loading</p>}
-        {isSuccess &&
+      <div className='main'>
+        {!isFetching && !isLoading && error && <Error />}
+        {isLoading && <Loader /> || isFetching && <Loader />}
+        {!isFetching && isSuccess &&
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
             <Image src={urlIcon} alt='Weather icon' width={100} height={100} />
             <HomeCard

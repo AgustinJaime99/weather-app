@@ -1,0 +1,52 @@
+.container {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) ;
+  backdrop-filter: blur(10px);
+}
+.bar {
+  width: 210px;
+  height: 200px;
+  background: linear-gradient(190deg, #0c94b9 0%, #104ba3 100%);
+  position: absolute;
+  bottom: 0;
+  transform: translateY(200px);
+  animation: loading 1s infinite;
+}
+.container .circle {
+  background-color: #adadad;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  position: absolute;
+  overflow: hidden;
+}
+.container .circle:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  left: -70px;
+}
+.container .circle:nth-child(3) {
+  width: 130px;
+  height: 130px;
+  top: 70px;
+  left: 150px;
+}
+.base {
+  width: 210px;
+  height: 30px;
+  background-color: #adadad;
+  position: absolute;
+  top: 170px;
+  overflow: hidden;
+}
+
+@keyframes loading {
+  to {
+    transform: (translateY(0));
+  }
+}
