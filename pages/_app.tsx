@@ -24,7 +24,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const cities = getCitiesFromLocalStorage()
 
   if (cities) {
-    console.log(cities)
     store.dispatch(hydrate(cities))
   }
 

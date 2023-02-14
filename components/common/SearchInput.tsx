@@ -1,6 +1,7 @@
-import { useCustomDispatch } from '@/hooks';
+import { useCustomDispatch, useCustomSelector } from '@/hooks';
+import ArrowLeft from '@/public/icons/ArrowLeft';
 import { useGetWeatherByNameQuery } from '@/redux/services/getApi';
-import { changeCoord } from '@/redux/store/slices/citySlice';
+import { changeCoord, changeNameCity } from '@/redux/store/slices/citySlice';
 import React, { useEffect, useState } from 'react'
 
 interface InputField {
@@ -14,19 +15,20 @@ interface Props {
 
 export const SearchInput = ({ visible, close }: Props) => {
   const dispatch = useCustomDispatch()
+  const { mainCityName } = useCustomSelector((state) => state.cityDetail)
   const [dataForm, setDataForm] = useState<InputField>({ search: '' })
-  const [dataSend, setDataSend] = useState('')
-  const { data, isSuccess } = useGetWeatherByNameQuery(dataSend)
+  const { data, isSuccess, isUninitialized } = useGetWeatherByNameQuery(mainCityName)
 
   useEffect(() => {
+    console.log('entre', isUninitialized)
     if (isSuccess) {
       dispatch(changeCoord({ lat: data[0]?.lat, lon: data[0]?.lon }))
     }
-  }, [data])
+  }, [data, dispatch])
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setDataSend(dataForm?.search)
+    dispatch(changeNameCity(dataForm?.search))
     setDataForm({ search: '' })
     close(!visible)
   }
@@ -39,6 +41,7 @@ export const SearchInput = ({ visible, close }: Props) => {
   }
   return (
     <form onSubmit={onSubmit}>
+      <ArrowLeft />
       <input className='input_search' placeholder='Search here' id='search' value={dataForm.search} onChange={(e) => handleChange(e)} />
     </form>
 

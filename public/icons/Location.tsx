@@ -3,8 +3,8 @@ import { SVGProps } from "react"
 
 const LocationIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
-    width={18}
-    height={22}
+    width={props.width || 18}
+    height={props.height || 22}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     {...props}

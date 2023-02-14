@@ -8,8 +8,9 @@ type City = {
 };
 
 const initialState = {
-  lat: '-37.81',
-  lon: '144.96',
+  mainCityName: 'Melbourne',
+  lat: '-37.8142176',
+  lon: '144.9631608',
   favCities: [],
 } as any;
 
@@ -17,7 +18,12 @@ const citySlice = createSlice({
   name: 'cityDetail',
   initialState,
   reducers: {
-    hydrate: (state, action) => void (state.favCities = action.payload),
+    hydrate: (state, action) => {
+      return {
+        ...state,
+        favCities: action.payload,
+      };
+    },
     changeCoord: (state, action) => {
       return {
         ...state,
@@ -45,9 +51,15 @@ const citySlice = createSlice({
         state.favCities.splice(index, 1);
       }
     },
+    changeNameCity: (state, action) => {
+      return {
+        ...state,
+        mainCityName: action.payload,
+      };
+    },
   },
 });
 
-export const { changeCoord, addCity, removeCity, hydrate } = citySlice.actions;
+export const { changeCoord, addCity, removeCity, hydrate, changeNameCity } = citySlice.actions;
 
 export default citySlice.reducer;
