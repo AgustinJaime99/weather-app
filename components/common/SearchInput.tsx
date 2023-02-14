@@ -14,12 +14,14 @@ interface Props {
 }
 
 export const SearchInput = ({ visible, close }: Props) => {
-  const dispatch = useCustomDispatch()
-  const { mainCityName } = useCustomSelector((state) => state.cityDetail)
   const [dataForm, setDataForm] = useState<InputField>({ search: '' })
-  const { data, isSuccess } = useGetWeatherByNameQuery(mainCityName)
+  const dispatch = useCustomDispatch()
+  const [shouldSkip, setShouldSkip] = useState(true);
+  const { mainCityName } = useCustomSelector((state) => state.cityDetail)
+  const { data, isSuccess } = useGetWeatherByNameQuery(mainCityName, { skip: shouldSkip })
 
   useEffect(() => {
+    console.log(data)
     if (isSuccess) {
       dispatch(changeCoord({ lat: data[0]?.lat, lon: data[0]?.lon }))
     }
@@ -29,6 +31,7 @@ export const SearchInput = ({ visible, close }: Props) => {
     e.preventDefault();
     dispatch(changeNameCity(dataForm?.search))
     setDataForm({ search: '' })
+    setShouldSkip(false)
     close(!visible)
   }
 

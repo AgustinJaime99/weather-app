@@ -19,7 +19,9 @@ export const ListFav = () => {
     setName(name)
   }
   useEffect(() => {
-    dispatch(changeNameCity(name))
+    if (name !== '') {
+      dispatch(changeNameCity(name))
+    }
   }, [dispatch, name])
 
 
