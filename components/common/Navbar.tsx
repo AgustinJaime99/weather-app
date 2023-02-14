@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useCustomSelector } from '@/hooks'
-import { useGetCityDetailQuery } from '@/services/getApi'
+import { useGetCityDetailQuery } from '@/redux/services/getApi'
 
 import styles from '@/styles/Layout.module.scss'
 import ArrowIcon from '@/public/icons/ArrowDown'

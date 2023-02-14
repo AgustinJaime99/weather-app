@@ -1,7 +1,7 @@
 import { useCustomDispatch, useCustomSelector } from "@/hooks";
 import AddFavIcon from "@/public/icons/AddFav";
 import RemoveFavIcon from "@/public/icons/RemoveFav"
-import { addCity, removeCity } from "@/slices/testSlice";
+import { addCity, removeCity } from "@/redux/store/slices/citySlice";
 import React, { useEffect } from "react";
 
 interface Props {
@@ -10,18 +10,19 @@ interface Props {
 
 
 interface CityFav {
-  id?: number;
+  id: number;
   name?: string;
   maxTemp?: number;
   minTemp?: number;
 }
 
 export const Favorite = ({ city }: Props) => {
-  const { favCities, lat, lon } = useCustomSelector((state) => state.cityDetail)
-  const index = favCities.findIndex((item: any) => item.id === city.id)
+  const { favCities } = useCustomSelector((state) => state.cityDetail)
+  console.log(favCities)
+  let index = favCities?.findIndex((item: any) => item.id === city.id)
+
   const dispatch = useCustomDispatch()
 
-  console.log(favCities, lat, lon)
   const addToFav = (city: CityFav) => {
     const cityObj: CityFav = {
       id: city.id,

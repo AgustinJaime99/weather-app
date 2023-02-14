@@ -1,6 +1,6 @@
 import { useCustomDispatch } from '@/hooks';
-import { useGetWeatherByNameQuery } from '@/services/getApi';
-import { changeCoord } from '@/slices/testSlice';
+import { useGetWeatherByNameQuery } from '@/redux/services/getApi';
+import { changeCoord } from '@/redux/store/slices/citySlice';
 import React, { useEffect, useState } from 'react'
 
 interface InputField {

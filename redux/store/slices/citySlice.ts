@@ -17,6 +17,7 @@ const citySlice = createSlice({
   name: 'cityDetail',
   initialState,
   reducers: {
+    hydrate: (state, action) => void (state.favCities = action.payload),
     changeCoord: (state, action) => {
       return {
         ...state,
@@ -30,7 +31,7 @@ const citySlice = createSlice({
       };
     },
     addCity: (state, action) => {
-      const cityIndex = state.favCities.findIndex((item: any) => item.id === action.payload.id);
+      const cityIndex = state?.favCities?.findIndex((item: any) => item.id === action.payload.id);
 
       if (cityIndex <= 0) {
         state.favCities.push({
@@ -47,6 +48,6 @@ const citySlice = createSlice({
   },
 });
 
-export const { changeCoord, addCity, removeCity } = citySlice.actions;
+export const { changeCoord, addCity, removeCity, hydrate } = citySlice.actions;
 
 export default citySlice.reducer;

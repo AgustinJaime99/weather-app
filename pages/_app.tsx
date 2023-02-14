@@ -1,22 +1,38 @@
 import '@/styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Provider } from "react-redux"
-import { store } from '@/store/store'
+import { store } from '@/redux/store/store'
 import { Layout } from '@/components/common/Layout'
 import '@/styles/Search.scss'
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react'
+import { hydrate } from '@/redux/store/slices/citySlice'
 
 export default function App({ Component, pageProps }: AppProps) {
-  let persist = persistStore(store)
+
+  const getCitiesFromLocalStorage = () => {
+    try {
+      if (typeof window !== 'undefined') {
+        const persistedData = localStorage.getItem('fav_cities')
+        if (persistedData) {
+          return JSON.parse(persistedData)
+        }
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const cities = getCitiesFromLocalStorage()
+
+  if (cities) {
+    console.log(cities)
+    store.dispatch(hydrate(cities))
+  }
 
   return (
     <Provider store={store}>
-      <PersistGate persistor={persist}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </PersistGate>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   )
 }

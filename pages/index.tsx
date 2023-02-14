@@ -2,7 +2,7 @@ import { Error } from '@/components/common/Error'
 import { HomeCard } from '@/components/common/HomeCard'
 import { Loader } from '@/components/common/Loader'
 import { useCustomSelector } from '@/hooks'
-import { useGetCityDetailQuery } from '@/services/getApi'
+import { useGetCityDetailQuery } from '@/redux/services/getApi'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -12,7 +12,7 @@ export default function Home() {
   const { data, error, isLoading, isSuccess, isFetching } = useGetCityDetailQuery({ lat, lon })
   const URL_ICONS: string = "http://openweathermap.org/img/wn/"
   const urlIcon: string = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
-  console.log(data)
+
   return (
     <>
       <Head>
