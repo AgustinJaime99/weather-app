@@ -21,11 +21,13 @@ export const SearchInput = ({ visible, close }: Props) => {
   const { data, isSuccess } = useGetWeatherByNameQuery(mainCityName, { skip: shouldSkip })
 
   useEffect(() => {
-    console.log(data)
+    if (mainCityName !== 'Melbourne') {
+      setShouldSkip(false)
+    }
     if (isSuccess) {
       dispatch(changeCoord({ lat: data[0]?.lat, lon: data[0]?.lon }))
     }
-  }, [data, dispatch])
+  }, [data, dispatch, mainCityName])
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

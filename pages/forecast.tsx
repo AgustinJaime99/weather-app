@@ -10,7 +10,7 @@ export default function Forecast() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{ height: '92.8vh', marginLeft: '25rem' }}>
+      <div className='main'>
         Forecast
       </div>
     </>
