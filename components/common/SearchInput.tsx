@@ -20,7 +20,6 @@ export const SearchInput = ({ visible, close }: Props) => {
   const { data, isSuccess, isUninitialized } = useGetWeatherByNameQuery(mainCityName)
 
   useEffect(() => {
-    console.log('entre', isUninitialized)
     if (isSuccess) {
       dispatch(changeCoord({ lat: data[0]?.lat, lon: data[0]?.lon }))
     }
