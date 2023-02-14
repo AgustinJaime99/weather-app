@@ -17,7 +17,7 @@ export const SearchInput = ({ visible, close }: Props) => {
   const dispatch = useCustomDispatch()
   const { mainCityName } = useCustomSelector((state) => state.cityDetail)
   const [dataForm, setDataForm] = useState<InputField>({ search: '' })
-  const { data, isSuccess, isUninitialized } = useGetWeatherByNameQuery(mainCityName)
+  const { data, isSuccess } = useGetWeatherByNameQuery(mainCityName)
 
   useEffect(() => {
     if (isSuccess) {

@@ -45,16 +45,14 @@ form {
   visibility: hidden;
   display: flex;
   flex-direction: column;
-  
+  gap: 25px;
+
   &.active {
     visibility: visible;
     transform: (translateY(0));
     animation: fadeToTop 0.7s;
     opacity: 1;
     transition: ease-in-out 0.3s;
-    gap: 25px;
-
-
   }
 
   ::-webkit-scrollbar{
@@ -121,6 +119,7 @@ form {
     justify-content: space-between;
     align-items: center;
     gap: 15px;
+    padding: 0 15px 0 0;
     p {
       font-family: 'Inter', sans-serif;
       font-style: normal;
