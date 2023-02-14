@@ -4,8 +4,8 @@ import { SVGProps } from "react"
 const RemoveFavIcon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="1em"
-    height="1em"
+    width={30}
+    height={30}
     viewBox="0 0 24 24"
     {...props}
   >

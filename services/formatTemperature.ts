@@ -1,1 +1,1 @@
-export const formatTemperature = (str: string) => str?.toString().slice(0, 4);
+export const formatTemperature = (str: any) => str?.toString().slice(0, 4);

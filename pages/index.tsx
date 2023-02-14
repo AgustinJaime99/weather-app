@@ -12,6 +12,7 @@ export default function Home() {
   const { data, error, isLoading, isSuccess, isFetching } = useGetCityDetailQuery({ lat, lon })
   const URL_ICONS: string = "http://openweathermap.org/img/wn/"
   const urlIcon: string = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
+  console.log(data)
   return (
     <>
       <Head>
@@ -27,6 +28,8 @@ export default function Home() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
             <Image src={urlIcon} alt='Weather icon' width={100} height={100} />
             <HomeCard
+              id={data?.id}
+              name={data?.name}
               weatherState={data?.weather[0]?.main}
               humidity={data?.main?.humidity}
               windSpeed={data?.wind?.speed}

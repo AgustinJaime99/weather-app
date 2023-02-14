@@ -1,16 +1,33 @@
 import { getApi } from '@/services/getApi';
 import citySlice from '@/slices/testSlice';
 import { useDispatch } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
+import storage from 'redux-persist/lib/storage';
+import { persistReducer } from 'redux-persist';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: ['weatherApi'],
+};
+
+export const rootReducers = combineReducers({
+  cityDetail: citySlice,
+  [getApi.reducerPath]: getApi.reducer,
+});
+
+const persistedReducer = persistReducer<any, any>(persistConfig, rootReducers);
 
 export function makeStore() {
   return configureStore({
-    reducer: {
-      cityDetail: citySlice,
-      [getApi.reducerPath]: getApi.reducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(getApi.middleware),
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoreActions: true,
+        },
+      }).concat(getApi.middleware),
   });
 }
 
