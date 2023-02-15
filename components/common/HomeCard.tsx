@@ -1,8 +1,9 @@
-import { formatTemperature } from "@/redux/services/formatTemperature";
-import styles from "@/styles/HomeCard.module.scss"
 import { Favorite } from "./Favorite";
 import { InfoCard } from "./InfoCard";
 
+import styles from "@/styles/HomeCard.module.scss"
+
+import { formatTemperature } from "@/utils/formatTemperature";
 
 interface Props {
   id: number;

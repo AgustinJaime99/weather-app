@@ -1,8 +1,10 @@
+import React, { useEffect } from "react";
+//redux & hooks
+import { addCity, removeCity } from "@/redux/store/slices/citySlice";
 import { useCustomDispatch, useCustomSelector } from "@/hooks";
+
 import AddFavIcon from "@/public/icons/AddFav";
 import RemoveFavIcon from "@/public/icons/RemoveFav"
-import { addCity, removeCity } from "@/redux/store/slices/citySlice";
-import React, { useEffect } from "react";
 
 interface Props {
   city: CityFav

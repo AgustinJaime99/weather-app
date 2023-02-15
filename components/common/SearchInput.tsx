@@ -1,8 +1,10 @@
-import { useCustomDispatch, useCustomSelector } from '@/hooks';
-import ArrowLeft from '@/public/icons/ArrowLeft';
+import React, { useEffect, useState } from 'react'
+//redux & hooks
 import { useGetWeatherByNameQuery } from '@/redux/services/getApi';
 import { changeCoord, changeNameCity } from '@/redux/store/slices/citySlice';
-import React, { useEffect, useState } from 'react'
+import { useCustomDispatch, useCustomSelector } from '@/hooks';
+
+import ArrowLeft from '@/public/icons/ArrowLeft';
 
 interface InputField {
   search: string;

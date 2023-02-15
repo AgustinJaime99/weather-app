@@ -1,11 +1,12 @@
-import '@/styles/globals.scss'
-import '@/styles/Search.scss'
-
 import type { AppProps } from 'next/app'
 import { Provider } from "react-redux"
-
-import { store } from '@/redux/store/store'
+//styles
+import '@/styles/globals.scss'
+import '@/styles/Search.scss'
+//components
 import { Layout } from '@/components/common/Layout'
+//redux
+import { store } from '@/redux/store/store'
 import { hydrate } from '@/redux/store/slices/citySlice'
 
 export default function App({ Component, pageProps }: AppProps) {

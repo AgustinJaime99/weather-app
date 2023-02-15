@@ -1,13 +1,14 @@
 import Head from 'next/head'
-
-import { getCurrentDayAndMonth } from '@/utils/currentDay'
+//components
 import { CardByHour } from '@/components/common/CardByHour'
+import { CardByDay } from '@/components/common/CardByDay'
+import { Error } from '@/components/common/Error'
+import { Loader } from '@/components/common/Loader'
+//hooks & utils
 import { useCustomSelector } from '@/hooks'
 import { useGetForecastQuery } from '@/redux/services/getApi'
-import { CardByDay } from '@/components/common/CardByDay'
+import { getCurrentDayAndMonth } from '@/utils/currentDay'
 import { formatTime } from '@/utils/formatTime'
-import { Loader } from '@/components/common/Loader'
-import { Error } from '@/components/common/Error'
 
 
 export default function Forecast() {

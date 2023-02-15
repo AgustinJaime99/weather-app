@@ -1,6 +1,6 @@
-import InfoIcon from '@/public/icons/Info';
 import React from 'react'
 import styles from "@/styles/HomeCard.module.scss"
+import InfoIcon from '@/public/icons/Info';
 
 type TypeInfo = "time" | "temp" | "speed" | "percent"
 

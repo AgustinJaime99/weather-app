@@ -2,9 +2,9 @@ import React from 'react'
 import Image from 'next/image';
 
 import styles from '@/styles/CardByHour.module.scss'
-
+//utils
 import { formatIconStr } from '@/utils/formatIcon';
-import { formatTemperature } from '@/redux/services/formatTemperature';
+import { formatTemperature } from '@/utils/formatTemperature';
 
 interface Props {
   icon: string;

@@ -2,10 +2,10 @@ import React from 'react'
 import Image from 'next/image';
 
 import styles from '@/styles/CardByHour.module.scss'
-
-import { formatTimeHours } from '@/utils/formatTimeHours';
-import { formatTemperature } from '@/redux/services/formatTemperature';
+//utils / redux
+import { formatTemperature } from '@/utils/formatTemperature';
 import { formatIconStr } from '@/utils/formatIcon';
+import { formatTimeHours } from '@/utils/formatTimeHours';
 
 interface Props {
   currentHour: number;

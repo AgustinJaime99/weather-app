@@ -1,5 +1,6 @@
-import { useCustomSelector } from "@/hooks";
 import React, { useEffect, useState } from "react";
+import { useCustomSelector } from "@/hooks";
+//components
 import { EmptyFav } from "./EmptyFav";
 import { ListFav } from "./ListFav";
 import { SearchInput } from "./SearchInput";

@@ -1,17 +1,19 @@
+import Image from 'next/image'
+import Head from 'next/head'
+//components
 import { Error } from '@/components/common/Error'
 import { HomeCard } from '@/components/common/HomeCard'
 import { Loader } from '@/components/common/Loader'
+//hooks & utils
 import { useCustomSelector } from '@/hooks'
 import { useGetCityDetailQuery } from '@/redux/services/getApi'
-import Head from 'next/head'
-import Image from 'next/image'
+import { formatIconStr } from '@/utils/formatIcon'
+
 
 
 export default function Home() {
   const { lat, lon } = useCustomSelector((state) => state.cityDetail)
   const { data, error, isLoading, isSuccess, isFetching } = useGetCityDetailQuery({ lat, lon })
-  const URL_ICONS: string = "http://openweathermap.org/img/wn/"
-  const urlIcon: string = URL_ICONS + data?.weather[0]?.icon + "@2x.png"
 
   return (
     <>
@@ -26,7 +28,7 @@ export default function Home() {
         {isLoading && <Loader /> || isFetching && <Loader />}
         {!isFetching && isSuccess &&
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3rem' }}>
-            <Image src={urlIcon} alt='Weather icon' width={100} height={100} />
+            <Image src={formatIconStr(data?.weather[0]?.icon)} alt='Weather icon' width={100} height={100} />
             <HomeCard
               id={data?.id}
               name={data?.name}

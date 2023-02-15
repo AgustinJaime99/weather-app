@@ -1,12 +1,14 @@
 import { useState } from 'react'
-import { useCustomSelector } from '@/hooks'
+//components
+import { SearchBox } from './SearchBox'
+//redux & hooks
 import { useGetCityDetailQuery } from '@/redux/services/getApi'
+import { useCustomSelector } from '@/hooks'
 
 import styles from '@/styles/Layout.module.scss'
 import ArrowIcon from '@/public/icons/ArrowDown'
 import BurgerMenuIcon from '@/public/icons/BurgerMenu'
 import LocationIcon from '@/public/icons/Location'
-import { SearchBox } from './SearchBox'
 
 
 export const Navbar = () => {

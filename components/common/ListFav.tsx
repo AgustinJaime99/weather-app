@@ -1,8 +1,10 @@
-import { useCustomDispatch, useCustomSelector } from "@/hooks"
-import LocationIcon from "@/public/icons/Location";
-import { formatTemperature } from "@/redux/services/formatTemperature";
-import { changeNameCity } from "@/redux/store/slices/citySlice";
 import React, { useEffect, useState } from "react";
+//Redux & hooks
+import { formatTemperature } from "@/utils/formatTemperature";
+import { changeNameCity } from "@/redux/store/slices/citySlice";
+import { useCustomDispatch, useCustomSelector } from "@/hooks"
+
+import LocationIcon from "@/public/icons/Location";
 
 interface City {
   name: string;

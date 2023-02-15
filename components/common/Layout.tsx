@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import styles from '@/styles/Layout.module.scss'
-import { Navbar } from './Navbar';
 import { AsideMenu } from './AsideMenu';
+import { Navbar } from './Navbar';
+import styles from '@/styles/Layout.module.scss'
 
 interface MyProps {
   children: React.ReactNode;

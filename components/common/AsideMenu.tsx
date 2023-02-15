@@ -1,8 +1,9 @@
-import DashboardIcon from '@/public/icons/Dashboard'
-import ReportIcon from '@/public/icons/Report'
-import styles from '@/styles/Layout.module.scss'
-import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+//styles & icons
+import styles from '@/styles/Layout.module.scss'
+import ReportIcon from '@/public/icons/Report'
+import DashboardIcon from '@/public/icons/Dashboard'
 
 export const AsideMenu = () => {
   const route = useRouter()
