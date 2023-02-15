@@ -48,6 +48,5 @@ export const SearchInput = ({ visible, close }: Props) => {
       <ArrowLeft />
       <input className='input_search' placeholder='Search here' id='search' value={dataForm.search} onChange={(e) => handleChange(e)} />
     </form>
-
   )
 }

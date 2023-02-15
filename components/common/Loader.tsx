@@ -1,5 +1,4 @@
 import styles from '@/styles/Loader.module.scss'
-import styleLayout from '@/styles/Layout.module.scss'
 
 export const Loader = () => {
   return (
