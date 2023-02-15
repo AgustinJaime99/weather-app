@@ -19,9 +19,12 @@ export const getApi = createApi({
     getCityDetail: builder.query({
       query: ({ lat, lon }: Props) => `data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`,
     }),
+    getForecast: builder.query({
+      query: ({ lat, lon }: Props) => `data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`,
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetWeatherByNameQuery, useGetCityDetailQuery } = getApi;
+export const { useGetWeatherByNameQuery, useGetCityDetailQuery, useGetForecastQuery } = getApi;

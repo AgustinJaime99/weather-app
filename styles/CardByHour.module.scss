@@ -1,0 +1,51 @@
+.container {
+  height: 223px;
+  width: 148px;
+  border: 1px solid #54CBFF;
+  border-radius: 29px;
+  padding: 20px 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all ease-in-out 0.3s;
+
+  p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid #ffffff;
+  }
+}
+
+.card_day {
+  display: flex;
+  flex-direction: row;
+  width: 512px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #54CBFF;
+  border-radius: 29px;
+  padding: 0px 40px 0px;
+
+  .right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+  }
+}

@@ -1,6 +1,19 @@
 import Head from 'next/head'
 
+import { getCurrentDayAndMonth } from '@/utils/currentDay'
+import { CardByHour } from '@/components/common/CardByHour'
+import { useCustomSelector } from '@/hooks'
+import { useGetForecastQuery } from '@/redux/services/getApi'
+import { CardByDay } from '@/components/common/CardByDay'
+import { formatTime } from '@/utils/formatTime'
+import { Loader } from '@/components/common/Loader'
+import { Error } from '@/components/common/Error'
+
+
 export default function Forecast() {
+  const { lat, lon } = useCustomSelector((state) => state.cityDetail)
+  const { data, isLoading, isFetching, isSuccess, error } = useGetForecastQuery({ lat, lon })
+  let currentDay = 0
 
   return (
     <>
@@ -10,9 +23,39 @@ export default function Forecast() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className='main'>
-        Forecast
+      {!isFetching && !isLoading && error && <div className='main'> <Error /></div>}
+      {isLoading && <div className='main'>
+        <Loader />
       </div>
+        || isFetching && <div className='main'>
+          <Loader />
+        </div>}
+      {!isFetching && isSuccess &&
+        (<div className='main_forecast'>
+          <h2>Today {getCurrentDayAndMonth()} </h2>
+          <div className='card_hours'>
+            {
+              data?.list?.slice(0, 7).map((item: any) => (
+                <CardByHour key={item?.dt} currentHour={item?.dt} degrees={item?.main?.feels_like} icon={item?.weather[0]?.icon} />
+              ))
+            }
+          </div>
+          <h2>Next forecast</h2>
+          <div className='card_days'>
+            {
+              data?.list?.map((item: any) => {
+                const date = new Date(item.dt * 1000)
+                const day = date.getDate()
+                if (day !== currentDay) {
+                  currentDay = day
+                  return (
+                    <CardByDay key={item?.dt} degrees={item?.main?.feels_like} currentDay={formatTime(item?.dt)} icon={item?.weather[0]?.icon} />
+                  )
+                }
+              })
+            }
+          </div>
+        </div>)}
     </>
   )
 }
