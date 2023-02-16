@@ -18,7 +18,7 @@ interface CityFav {
 }
 
 export const Favorite = ({ city }: Props) => {
-  const { favCities } = useCustomSelector((state) => state.cityDetail)
+  const { favCities } = useCustomSelector((state: any) => state.cityDetail)
   const dispatch = useCustomDispatch()
   let index = favCities?.findIndex((item: any) => item.id === city.id)
 
