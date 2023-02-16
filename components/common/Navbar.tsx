@@ -12,7 +12,7 @@ import LocationIcon from '@/public/icons/Location'
 
 
 export const Navbar = () => {
-  const { lat, lon } = useCustomSelector(state => state.cityDetail)
+  const { lat, lon } = useCustomSelector((state: any) => state.cityDetail)
   const { data, isSuccess } = useGetCityDetailQuery({ lat, lon })
   const [isOpen, setIsOpen] = useState(false)
   const toggleOpen = () => {

@@ -12,7 +12,7 @@ import { formatTime } from '@/utils/formatTime'
 
 
 export default function Forecast() {
-  const { lat, lon } = useCustomSelector((state) => state.cityDetail)
+  const { lat, lon } = useCustomSelector((state: any) => state.cityDetail)
   const { data, isLoading, isFetching, isSuccess, error } = useGetForecastQuery({ lat, lon })
   let currentDay = 0
 

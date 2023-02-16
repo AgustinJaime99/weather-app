@@ -16,7 +16,7 @@ interface City {
 export const ListFav = () => {
   const [name, setName] = useState<string>('')
   const dispatch = useCustomDispatch()
-  const { favCities } = useCustomSelector((state) => state.cityDetail)
+  const { favCities } = useCustomSelector((state: any) => state.cityDetail)
   const handleSelectName = (name: string) => {
     setName(name)
   }

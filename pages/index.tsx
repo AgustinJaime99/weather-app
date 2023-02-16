@@ -12,7 +12,7 @@ import { formatIconStr } from '@/utils/formatIcon'
 
 
 export default function Home() {
-  const { lat, lon } = useCustomSelector((state) => state.cityDetail)
+  const { lat, lon } = useCustomSelector((state: any) => state.cityDetail)
   const { data, error, isLoading, isSuccess, isFetching } = useGetCityDetailQuery({ lat, lon })
 
   return (

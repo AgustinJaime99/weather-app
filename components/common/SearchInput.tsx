@@ -19,7 +19,7 @@ export const SearchInput = ({ visible, close }: Props) => {
   const [dataForm, setDataForm] = useState<InputField>({ search: '' })
   const dispatch = useCustomDispatch()
   const [shouldSkip, setShouldSkip] = useState(true);
-  const { mainCityName } = useCustomSelector((state) => state.cityDetail)
+  const { mainCityName } = useCustomSelector((state: any) => state.cityDetail)
   const { data, isSuccess } = useGetWeatherByNameQuery(mainCityName, { skip: shouldSkip })
 
   useEffect(() => {
