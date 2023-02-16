@@ -15,7 +15,7 @@ export const SearchBox = ({ visible, close }: Props) => {
   useEffect(() => {
     setMounted(true)
   }, [])
-  const { favCities } = useCustomSelector((state) => state.cityDetail)
+  const { favCities } = useCustomSelector((state: any) => state.cityDetail)
   return mounted ? (
     <>
       <div className={`modal ${visible ? 'active' : ''}`} onClick={() => close(!visible)} />
