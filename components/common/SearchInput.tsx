@@ -29,7 +29,7 @@ export const SearchInput = ({ visible, close }: Props) => {
     if (isSuccess) {
       dispatch(changeCoord({ lat: data[0]?.lat, lon: data[0]?.lon }))
     }
-  }, [data, dispatch, mainCityName])
+  }, [data, dispatch, mainCityName, isSuccess])
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
