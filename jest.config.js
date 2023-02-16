@@ -16,6 +16,7 @@ const customJestConfig = {
     '\\.svg$': '<rootDir>/__mocks__/svgrMock.js',
     '^@/(.*)$': '<rootDir>/$1',
   },
+  setupFiles: ['<rootDir>/.jest/setEnvVars.js'],
 };
 
 module.exports = createJestConfig(customJestConfig);

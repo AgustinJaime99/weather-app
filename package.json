@@ -32,6 +32,7 @@
     "jest-environment-jsdom": "^29.4.2",
     "msw": "^1.0.1",
     "react-redux": "^8.0.5",
-    "sass": "^1.58.0"
+    "sass": "^1.58.0",
+    "whatwg-fetch": "^3.6.2"
   }
 }

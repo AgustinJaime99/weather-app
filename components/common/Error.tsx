@@ -6,7 +6,7 @@ export const Error = () => {
   return (
     <div className={styles.centered_container}>
       <h2>
-        We couldn't find your place :(
+        We couldn&apos;t find your place :(
       </h2>
       <Image src={ErrorImage} alt='error' width={500} height={500} />
     </div>

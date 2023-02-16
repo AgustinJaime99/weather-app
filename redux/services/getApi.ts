@@ -11,7 +11,7 @@ interface Props {
 
 export const getApi = createApi({
   reducerPath: 'weatherApi',
-  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://api.openweathermap.org/' }),
   endpoints: (builder) => ({
     getWeatherByName: builder.query({
       query: (name: string) => `geo/1.0/direct?q=${name}&limit=1&appid=${API_KEY}`,
