@@ -7,7 +7,6 @@ import { useCustomSelector } from '@/hooks'
 
 import styles from '@/styles/Layout.module.scss'
 import ArrowIcon from '@/public/icons/ArrowDown'
-import BurgerMenuIcon from '@/public/icons/BurgerMenu'
 import LocationIcon from '@/public/icons/Location'
 
 
@@ -21,7 +20,7 @@ export const Navbar = () => {
 
   return (
     <nav className={styles.navbar}>
-      <BurgerMenuIcon />
+      <span />
       <div onClick={(e) => toggleOpen()} className={isOpen ? styles.city__info__open : styles.city__info__closed}>
         <LocationIcon fill={isOpen ? '#fff' : "#000"} />
         <h3>
